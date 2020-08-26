@@ -9,7 +9,8 @@ The user can:
 - Update employees by role/manager
 - View/add/remove departments
 - View/add/remove roles
-- See the total salary budget of departments </br>
+- See the total salary budget of departments 
+</br>
 The application uses:
 - npm inquirer: to interact with users
 - npm mysql2: to make connection with the local database
