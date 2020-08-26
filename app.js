@@ -467,14 +467,32 @@ function totalSalary()
             value: dpt.id
         }))
 
-        db.query('SELECT * FROM roles', function (error, roles){
-            if (error) { console.log(error) }
-    
-            roles = roles.map(role => ({ 
-                name: `${role.title}`,
-                value: role.id
-            }))
-        })
+        inquirer
+            .prompt([
+                {
+                    type: 'list',
+                    name: 'select',
+                    message: 'Select a department:',
+                    choices: department
+                }
+            ])
+            .then(answer => {
+                db.query(`SELECT department.id, department.name AS department,
+                        SUM(roles.salary) AS total_budget
+                        FROM employee
+                        LEFT JOIN roles
+                        ON employee.role_id = roles.id
+                        LEFT JOIN department
+                        ON roles.department_id = department.id
+                        WHERE department.id = ?`,
+                    answer.select, function (error, data){
+                        if (error) { console.log(error) }
+
+                        console.table(data);
+                        init();
+                    }) 
+            })
+            .catch (function (error) { console.log(error) })
     })
 }
 

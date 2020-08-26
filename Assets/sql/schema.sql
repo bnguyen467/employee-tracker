@@ -1,5 +1,6 @@
--- Preset data goes here
+-- Please Execute each one in order
 
+-- 1
 USE employee_db;
 INSERT INTO department(name)
 VALUE ('Sales'), 
@@ -7,6 +8,7 @@ VALUE ('Sales'),
     ('Finance'), 
     ('Legal');
 
+-- 2
 USE employee_db;
 INSERT INTO roles(title, salary, department_id)
 VALUE ('Sales Lead', 100000, 1),
@@ -17,6 +19,7 @@ VALUE ('Sales Lead', 100000, 1),
     ('Legal Team Lead', 250000, 4),
     ('Lawyer', 190000, 4);
 
+-- 3
 USE employee_db;
 INSERT INTO employee(first_name, last_name, role_id, manager_id)
 VALUE ('John', 'Doe', 1, NULL),
@@ -27,6 +30,7 @@ VALUE ('John', 'Doe', 1, NULL),
 	('Sarah', 'Lourd', 6, NULL),
 	('Tom', 'Allen', 7, NULL);
 
+-- 4
 USE employee_db;
 UPDATE employee SET manager_id = 10 WHERE first_name = 'John';
 UPDATE employee SET manager_id = 8 WHERE first_name = 'Mike';
