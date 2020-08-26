@@ -291,7 +291,7 @@ function updateEmployeeManager()
                 {
                     type: 'list',
                     name: 'newManager',
-                    message: `New role for employee: `,
+                    message: `New manager for the employee: `,
                     choices: employee
                 },
             ])
